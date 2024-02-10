@@ -9,8 +9,6 @@ pipeline {
         stage("Create an EKS Cluster") {
             steps {
                 script {
-                    # Give the location of terraform scripts directory relative 
-                    # to the repo
                     dir('terraform-for-cluster/') {
                         sh "terraform init"
                         sh "terraform apply -auto-approve"
@@ -21,8 +19,6 @@ pipeline {
         stage("Deploy to EKS") {
             steps {
                 script {
-                    # Give the location of kubernetes scripts directory relative 
-                    # to the repo
                     dir('kubernetes/') {
                         sh "aws eks update-kubeconfig --name sample-eks-cluster"
                         sh "kubectl apply -f deployment.yaml"
