@@ -1,5 +1,5 @@
 variable "vpc_cidr_block" {
- type = string
+ type = list(string)
 }
 
 variable "private_subnet_cidr_blocks" {
